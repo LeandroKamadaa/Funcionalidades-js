@@ -4,7 +4,7 @@ function submitContato() {
     const phoneNumber = document.getElementById('phoneNumber').value.trim();
 
     let validar = true;
-    const verifyUsername = /^[A-Za-zÀ-ÿ]+( [A-Za-zÀ-ÿ]+)*$/; // Uma maluquice que verifica nome
+    const usernameVerify = /([0-9_&\-\.\,@']+)/g; // Uma maluquice que verifica nome
     const emailVerify = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Outra maluquice pra email
     const phoneVerify = /^(\(?\d{2}\)?\s?)?\d{4,5}[-]?\d{4}$/; // Essa aqui nn pede por "+55"
 
@@ -14,7 +14,7 @@ function submitContato() {
         validar = false;
     }
 
-    else if (!emailVerify.test(username)){
+    else if (usernameVerify.test(username)){
         alert('Por favor, insira um nome válido!');
         validar = false;
     }
