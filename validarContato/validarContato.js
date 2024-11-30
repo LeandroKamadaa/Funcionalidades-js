@@ -4,15 +4,28 @@ function submitContato() {
     const phoneNumber = document.getElementById('phoneNumber').value.trim();
 
     let validar = true;
-    const emailVerify = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Uma maluquice que verifica email
+    const verifyUsername = /^[A-Za-zÀ-ÿ]+( [A-Za-zÀ-ÿ]+)*$/; // Uma maluquice que verifica nome
+    const emailVerify = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Outra maluquice pra email
+    const phoneVerify = /^(\(?\d{2}\)?\s?)?\d{4,5}[-]?\d{4}$/; // Essa aqui nn pede por "+55"
+
 
     if (!username || !email || !phoneNumber) {
         alert('Preencha todos os campos!');
         validar = false;
     }
 
+    else if (!emailVerify.test(username)){
+        alert('Por favor, insira um nome válido!');
+        validar = false;
+    }
+
     else if (!emailVerify.test(email)) {
         alert('Por favor, insira um email válido!');
+        validar = false;
+    }
+
+    else if (!phoneVerify.test(phoneNumber)) {
+        alert('Por favor, insira um número válido!');
         validar = false;
     }
 
